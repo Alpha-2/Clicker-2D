@@ -3,41 +3,63 @@ using UnityEngine;
 public class Menu : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _exitMenuButton;
+    private GameObject _menu;
 
     [SerializeField]
-    private GameObject _mainMenuCanvas;
+    private GameObject _menuMainElements;
 
     [SerializeField]
-    private GameObject _mainButtons;
+    private GameObject _mainMenuButton;
 
     [SerializeField]
-    private GameObject _upgradeButtons;
+    private GameObject _upgradesButtons;
 
-    public void OnMainMenuButton()
+    public void OnMenuEnter()
     {
-        _mainMenuCanvas.SetActive(true);
-        _exitMenuButton.SetActive(true);
+        _menu.SetActive(true);
     }
 
-    public void OnMainMenuButtonExit()
+    public void OnMenuExit()
     {
-        _mainMenuCanvas.SetActive(false);
-        _exitMenuButton.SetActive(false);
+        _menu.SetActive(false);
+    }
+
+    public void MainMenuButton()
+    {
+        _mainMenuButton.SetActive(false);
+        _menuMainElements.SetActive(true);
+        _upgradesButtons.SetActive(false);
+    }
+
+    public void OnMusicButton()
+    {
+        _menuMainElements.SetActive(false);
+        _mainMenuButton.SetActive(true);
+    }
+
+    public void OnLotteryButton()
+    {
+        _menuMainElements.SetActive(false);
+        _mainMenuButton.SetActive(true);
+    }
+
+    public void OnMinigamesButton()
+    {
+        _menuMainElements.SetActive(false);
+        _mainMenuButton.SetActive(true);
     }
 
     public void OnUpgradesButton()
     {
-        _mainButtons.SetActive(false);
-        _upgradeButtons.SetActive(true);
-        _exitMenuButton.SetActive(true);
+        _menuMainElements.SetActive(false);
+        _mainMenuButton.SetActive(true);
+        _upgradesButtons.SetActive(true);
     }
 
-    public void OnUpgradesExitButtons()
+    public void OnGalleryButton()
     {
-        _mainButtons.SetActive(true);
-        _upgradeButtons.SetActive(false);
-        _exitMenuButton.SetActive(true);
+        _menuMainElements.SetActive(false);
+        _mainMenuButton.SetActive(true);
     }
 
 }

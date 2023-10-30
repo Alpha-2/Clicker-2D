@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
             _pauseCanvas.SetActive(true);
+
     }
 
     public void ResumeButton()
