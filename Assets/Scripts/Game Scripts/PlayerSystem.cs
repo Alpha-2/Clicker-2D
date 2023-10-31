@@ -8,9 +8,6 @@ public class PlayerSystem : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _moneyCounter;
 
-    [SerializeField] 
-    private GameObject _notificationGUI;
-
     [SerializeField]
     private TextMeshProUGUI _notificationMessage;
 
@@ -22,21 +19,13 @@ public class PlayerSystem : MonoBehaviour
     private int _2xmoneyCost = 10;
     private int _4xmoneyCost = 20;
 
-    private int _buyingItemCostSummary;
-
     // Upgrades save
     private int _2xMoneyboost = 0;
     private int _4xMoneyboost = 0;
 
     private void Update()
     {
-        _moneyCounter.text = PlayerMoney.ToString();
-
-        if (_notificationGUI.activeSelf == true && _notificationGUI != null)
-        {
-            _notificationMessage.text = "Nie staæ ciê! Brakuje ci " + (_buyingItemCostSummary - PlayerMoney);
-            Invoke("OnNotificationGUI", 6f);
-        }
+        _moneyCounter.text = PlayerMoney.ToString() + "$";
 
         // save progress
         PlayerPrefs.SetInt("money", PlayerMoney);
@@ -54,8 +43,8 @@ public class PlayerSystem : MonoBehaviour
         }
         else if (PlayerMoney < _2xmoneyCost)
         {
-            _buyingItemCostSummary = _2xmoneyCost;
-            _notificationGUI.SetActive(true);
+            _notificationMessage.text = "Nie staæ ciê! Brakuje ci " + (10 - PlayerMoney) + "$";
+            Invoke("OnNotificationClearGUI", 2f);
         }
     }
 
@@ -69,8 +58,8 @@ public class PlayerSystem : MonoBehaviour
         }
         else if (PlayerMoney < 10)
         {
-            _buyingItemCostSummary = _4xmoneyCost;
-            _notificationGUI.SetActive(true);
+            _notificationMessage.text = "Nie staæ ciê! Brakuje ci " + (20 - PlayerMoney) + "$";
+            Invoke("OnNotificationClearGUI", 2f);
         }
     }
 
@@ -79,9 +68,9 @@ public class PlayerSystem : MonoBehaviour
         PlayerMoney += 1 * _moneyBonus;
     }
 
-    public void OnNotificationGUI()
+    public void OnNotificationClearGUI()
     {
-        _notificationGUI.SetActive(false);
+        _notificationMessage.text = string.Empty;
     }
 
     public void Awake()
