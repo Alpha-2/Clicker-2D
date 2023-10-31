@@ -31,12 +31,9 @@ public class PlayerSystem : MonoBehaviour
     private void Update()
     {
         _moneyCounter.text = PlayerMoney.ToString();
+        _notificationMessage.text = "Nie staÃ¦ ciÃª! Brakuje ci " + (_buyingItemCostSummary - PlayerMoney);
+        Invoke("OnNotificationGUI", 6f);
 
-        if (_notificationGUI.activeSelf == true && _notificationGUI != null)
-        {
-            _notificationMessage.text = "Nie staæ ciê! Brakuje ci " + (_buyingItemCostSummary - PlayerMoney);
-            Invoke("OnNotificationGUI", 6f);
-        }
 
         // save progress
         PlayerPrefs.SetInt("money", PlayerMoney);
@@ -79,9 +76,22 @@ public class PlayerSystem : MonoBehaviour
         PlayerMoney += 1 * _moneyBonus;
     }
 
-    public void OnNotificationGUI()
+    public bool IsBuyable(int cost, int playerMoney)
     {
-        _notificationGUI.SetActive(false);
+        bool summary;
+        
+        if (cost >= playerMoney)
+            summary = true;
+        else
+            summary = false;
+
+
+        return summary;
+    }
+
+    public void OnClearNotificationGUI()
+    {
+        _notificationMessage.text = String.Empty;
     }
 
     public void Awake()
