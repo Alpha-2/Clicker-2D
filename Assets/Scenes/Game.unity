@@ -1075,6 +1075,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moneyCounter: {fileID: 803546477}
   _notificationMessage: {fileID: 12201440}
+  _2xMoneyButton: {fileID: 481988780}
+  _4xMoneyButton: {fileID: 1153712172}
+  _2xMoneyButtonMessage: {fileID: 1166229312}
+  _4xMoneyButtonMessage: {fileID: 894025307}
 --- !u!114 &373152159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2886,7 +2890,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "4x money \nbonus"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3958,7 +3962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "2x money \nbonus"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
